@@ -1,0 +1,30 @@
+﻿dotnet user-secrets set "TokenKey" "Super Secret suaspsas wdwdwdwdwd"
+npm install @microsoft/signalr
+dotnet user-secrets list
+
+
+
+
+dotnet user-secrets set "Cloudinary:CloudName" "ds9oeodcq"
+dotnet user-secrets set "Cloudinary:ApiSecret" "nALx_KJqa6nPZcrwZ5QYM0V1ICI"
+dotnet user-secrets set "Cloudinary:ApiKey" "218959995995951"
+
+dotnet user-secrets set Authentication:Facebook:AppId  2725305214407182
+dotnet user-secrets set Authentication:Facebook:AppSecret  e6ab5e71998710ebba92998998b98c08
+
+https://www.udemy.com/course/complete-guide-to-building-an-app-with-net-core-and-react/learn/lecture/15866192#overview
+
+https://cloudinary.com/users/change_password
+
+lftparis@gmail.com
+Test1234:)
+
+
+npm install react-facebook-login @types/react-facebook-login
+
+lftparis@gmail.con	
+
+
+
+dotnet user-secrets set Authentication:Facebook:AppId 
+https://developers.facebook.com/apps/2725305214407182/settings/basic/

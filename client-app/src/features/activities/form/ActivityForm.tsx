@@ -10,6 +10,11 @@ import TextAreaInput from '../../../app/common/form/TextAreaInput';
 import SelectInput from '../../../app/common/form/SelectInput';
 import DateInput from '../../../app/common/form/DateInput';
 import { category } from '../../../app/common/options/categoryOptions';
+import { region } from '../../../app/common/options/regionsOpt';
+import { transport } from '../../../app/common/options/transportOptions';
+import ActivityPhotos from './ActivityPhotos';
+
+
 import { combineDateAndTime } from '../../../app/common/util/util';
 import {
   combineValidators,
@@ -20,8 +25,17 @@ import {
 import { RootStoreContext } from '../../../app/stores/rootStore';
 
 const validate = combineValidators({
-  title: isRequired({ message: 'The event title is required' }),
+  title: isRequired({ message: 'is required' }),
   category: isRequired('Category'),
+ //region: isRequired('region'),
+
+//  name: isRequired('name'),
+//  phone: isRequired('phone'),
+//  email: isRequired('email'),
+
+
+ //trasnport: isRequired('transport'),
+
   description: composeValidators(
     isRequired('Description'),
     hasLengthGreaterThan(4)({
@@ -51,6 +65,7 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
   } = rootStore.activityStore;
 
   const [activity, setActivity] = useState(new ActivityFormValues());
+
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -83,32 +98,108 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
     <Grid>
       <Grid.Column width={10}>
         <Segment clearing>
+       
           <FinalForm
             validate={validate}
             initialValues={activity}
             onSubmit={handleFinalFormSubmit}
             render={({ handleSubmit, invalid, pristine }) => (
               <Form onSubmit={handleSubmit} loading={loading}>
-                <Field
-                  name='title'
-                  placeholder='Title'
-                  value={activity.title}
-                  component={TextInput}
-                />
-                <Field
-                  name='description'
-                  placeholder='Description'
-                  rows={3}
-                  value={activity.description}
-                  component={TextAreaInput}
-                />
-                <Field
+
+
+<br/>
+<h5>Jak chcesz pomoc ?</h5>
+
+
+
+<Field
                   component={SelectInput}
                   options={category}
                   name='category'
                   placeholder='Category'
                   value={activity.category}
                 />
+
+
+
+                <Field
+                  name='title'
+                  placeholder='Tytuł ogłoszenia'
+                  value={activity.title}
+                  component={TextInput}
+                />
+
+                <Field
+                  name='description'
+                  placeholder='Opis'
+                  rows={3}
+                  value={activity.description}
+                  component={TextAreaInput}
+                />
+
+
+<ActivityPhotos/>
+
+
+            <br/>
+<h5>Gdzie ?</h5>
+      <Form.Group>
+             <Field
+                  component={SelectInput}
+                  options={region}
+                  name='region'
+                  placeholder='Województwo'
+                  value={activity.region}
+                />
+
+            <Field
+                  component={TextInput}
+                  name='city'
+                  placeholder='Miasto'
+                  value={activity.city}
+                />
+          
+          </Form.Group>
+
+          <h5>A co z dostawa?</h5>
+              <Field
+                  component={SelectInput}
+                  options={transport}
+                  name='transport'
+                  placeholder='transport'
+                  value={activity.transport}
+                />
+
+
+      
+
+<h5>O mnie</h5>
+                <Field
+                  name='name'
+                  placeholder='Imie'
+                  value={activity.name}
+                  component={TextInput}
+                />
+
+
+                  <Field
+                  name='phone'
+                  placeholder='Telefon'
+                  value={activity.phone}
+                  component={TextInput}
+                />
+
+              <Field
+                  name='email'
+                  placeholder='email'
+                  value={activity.email}
+                  component={TextInput}
+                />
+
+
+
+
+
                 <Form.Group widths='equal'>
                   <Field
                     component={DateInput}
@@ -117,35 +208,33 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
                     placeholder='Date'
                     value={activity.date}
                   />
-                  <Field
+                   <Field
                     component={DateInput}
                     name='time'
                     time={true}
                     placeholder='Time'
                     value={activity.time}
-                  />
+                  /> 
                 </Form.Group>
 
-                <Field
-                  component={TextInput}
-                  name='city'
-                  placeholder='City'
-                  value={activity.city}
-                />
-                <Field
+          <Field
                   component={TextInput}
                   name='venue'
                   placeholder='Venue'
                   value={activity.venue}
-                />
+                />  
                 <Button
                   loading={submitting}
-                  disabled={loading || invalid || pristine}
+               //   disabled={loading }
+                 disabled={loading || invalid || pristine}
                   floated='right'
                   positive
                   type='submit'
                   content='Submit'
                 />
+
+
+
                 <Button
                   onClick={
                     activity.id
@@ -163,6 +252,8 @@ const ActivityForm: React.FC<RouteComponentProps<DetailParams>> = ({
         </Segment>
       </Grid.Column>
     </Grid>
+
+
   );
 };
 

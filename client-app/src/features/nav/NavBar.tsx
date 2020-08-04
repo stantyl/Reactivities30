@@ -10,17 +10,17 @@ const NavBar: React.FC = () => {
   return (
     <Menu fixed='top' inverted>
       <Container>
-        <Menu.Item header as={NavLink} exact to='/'>
+        <Menu.Item header as={NavLink} to='/activities' >
           <img src='/assets/logo.png' alt='logo' style={{ marginRight: 10 }} />
-          Reactivities
+          Donations
         </Menu.Item>
-        <Menu.Item name='Activities' as={NavLink} to='/activities' />
+        {/* <Menu.Item name='Donations' as={NavLink} to='/activities' /> */}
         <Menu.Item>
           <Button
             as={NavLink}
             to='/createActivity'
             positive
-            content='Create Activity'
+            content='Create Donation'
           />
         </Menu.Item>
         {user && (

@@ -1,15 +1,13 @@
-
-export interface IActivitiesEnvelope {
-  activities: IActivity[];
+export interface IDonationsEnvelope {
+  activities: IDonation[];
   activityCount: number;
 }
 
-export interface IActivity {
+export interface IDonation {
   id: string;
   title: string;
   description: string;
   category: string;
-  region: string;
   date: Date;
   city: string;
   venue: string;
@@ -28,29 +26,21 @@ export interface IComment {
   image: string;
 }
 
-export interface IActivityFormValues extends Partial<IActivity> {
+export interface IDonationFormValues extends Partial<IDonation> {
   time?: Date;
 }
 
-export class ActivityFormValues implements IActivityFormValues {
+export class DonationFormValues implements IDonationFormValues {
   id?: string = undefined;
   title: string = '';
   category: string = '';
- region: string = '';
- transport: string = '';
-
- name: string = '';
- phone: string = '';
- email: string = '';
-
   description: string = '';
-
   date?: Date = undefined;
   time?: Date = undefined;
   city: string = '';
   venue: string = '';
 
-  constructor(init?: IActivityFormValues) {
+  constructor(init?: IDonationFormValues) {
     if (init && init.date) {
       init.time = init.date;
     }

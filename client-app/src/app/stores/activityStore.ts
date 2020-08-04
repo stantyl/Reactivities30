@@ -232,6 +232,51 @@ export default class ActivityStore {
     }
   };
 
+////
+  // @action uploadActivity = async (file: Blob) => {
+  //   this.uploadingActivityPhoto = true;
+  //   try {
+  //     const photo = await agent.Profiles.uploadPhoto(file);
+  //     runInAction(() => {
+  //       if (this.profile) {
+  //         this.profile.photos.push(photo);
+  //         if (photo.isMain && this.rootStore.userStore.user) {
+  //           this.rootStore.userStore.user.image = photo.url;
+  //           this.profile.image = photo.url;
+  //         }
+  //       }
+  //       this.uploadingPhoto = false;
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error('Problem uploading photo');
+  //     runInAction(() => {
+  //       this.uploadingPhoto = false;
+  //     });
+  //   }
+  // };
+
+
+
+////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   @action editActivity = async (activity: IActivity) => {
     this.submitting = true;
     try {
